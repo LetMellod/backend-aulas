@@ -1,6 +1,7 @@
 {
   "name": "aula04",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll"
@@ -9,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "description": "",
   "devDependencies": {
     "jest": "^30.1.1"
   }

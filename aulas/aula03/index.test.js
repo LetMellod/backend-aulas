@@ -1,33 +1,20 @@
 import { soma, divisao } from './index.js';
-if (soma(1,1) === 2) {
-    console.log("Passou 1!");
-}
-if (soma(1, 0) === 1) {
-    console.log("Passou 2!");
 
-} else {
-    console.error("Deu ruim 1!");
-}
-if (soma(1, -1) === 0) {
-    console.log("Passou 3!");
-} else {
-    console.error("Deu ruim 3!");
-}
+if (soma(1, 1) === 2) console.log("Passou 1º!");
+else console.error("Deu ruim 1º!");
 
-if (divisao(1, 1) === 1) {
-    console.log("Passou 4!")
-} else {
-    console.error("Deu ruim 4!");
-}
+if (soma(1, 0) === 1) console.log("Passou 2º!");
+else console.error("Deu ruim 2º!");
 
-if (divisao(6, 3) === 2) {
-    console.log("Passou 5!")
-} else {
-    console.error("Deu ruim 5!");
-}
+if (soma(1, -1) === 0) console.log("Passou 3º!");
+else console.error("Deu ruim 3º!");
 
-if (divisao(1, 0) === undefined) {
-    console.log("Passou 6!")
-} else {
-    console.error("Deu ruim 6!");
-}
+if (divisao(1, 1) === 1) console.log("Passou 4º!");
+else console.error("Deu ruim 4º!");
+
+if (divisao(6, 3) === 2) console.log("Passou 5º!");
+else console.error("Deu ruim 5º!");
+
+if (divisao(1, 0) === undefined) console.log("Passou 6º!");
+else console.error("Deu ruim 6º!");
+

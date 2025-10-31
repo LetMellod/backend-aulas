@@ -5,36 +5,41 @@ const listarTarefas = (req, res) => {
 };
 
 const criarTarefa = (req, res) => {
-    const novaTarefa = model.criar(req.body);
+  const novaTarefa = model.criar(req.body);
   res.status(201).json(novaTarefa);
 };
 
-const obterTarefa = (req, res) => {
-    const { id } = req.params;
-    const tarefaEncontrada = model.obter(id);
-    if (tarefaEncontrada) return res.json(tarefaEncontrada);
-    res.status(404).json({msg: "Tarefa não encontrada"});
-}
-
-const atualizarTarefa = (req, res) => {
+const buscarTarefa = (req, res, next) => {
   const { id } = req.params;
-  const tarefaEncontrada = tarefas.find(item => item.id == id);
+  const tarefaEncontrada = model.obter(id);
   if (tarefaEncontrada) {
-  tarefaEncontrada.nome = req.body.nome;
-  tarefaEncontrada.concluida = req.body.concluida;
-  return res.json(tarefaEncontrada);
+   req.tarefa = tarefaEncontrada;
+   return next();
   }
   res.status(404).json({ msg: "Tarefa não encontrada" });
 }
 
-const deletarTarefa = (req, res) => {
-  const { id }= req.params;
-  const posicao = tarefas.findIndex(item => item.id == id);
-  if (posicao >=0) {
-    tarefas.splice(posicao, 1);
-    return res.status(204).end();
-  }
-  res.status(404).json({ msg: "Tarefa não encontrada"});
-}
+const obterTarefa = (req, res) => {
+  res.json(req.tarefa);
+};
 
-module.exports = { listarTarefas, criarTarefa, obterTarefa, atualizarTarefa, deletarTarefa };
+const atualizarTarefa = (req, res) => {
+  const { id } = req.params;
+  const tarefaEncontrada = model.atualizar({ id, ...req.body });
+  res.json(tarefaEncontrada);
+};
+
+const removerTarefa = (req, res) => {
+  const { id } = req.params;
+  model.remover(id);
+  res.status(204).end();
+};
+
+module.exports = {
+  listarTarefas,
+  criarTarefa,
+  buscarTarefa,
+  obterTarefa,
+  atualizarTarefa,
+  removerTarefa,
+};

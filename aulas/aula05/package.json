@@ -1,6 +1,7 @@
 {
   "name": "aula05",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -9,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0"

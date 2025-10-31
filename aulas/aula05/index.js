@@ -7,32 +7,33 @@ const cors = require('cors');
 // importa middleware de rota
 const router = require('./routerTarefa');
 
-// cria uma instância da aplicação
+// cria uma instancia da aplicação
 const app = express();
 
 // middleware embutido ou integrado
 app.use(express.json());
-// ?param1=valor&param2=valor2
-app.use(express.urlencoded({ extended: false}));
+//?param1=valor&param2=valor2
+app.use(express.urlencoded({ extended: false })); 
 
 // middleware de terceiros
 app.use(cors());
 
-// middleware de aplicativo
+// middleware de aplicacao
 app.use((req, res, next) => {
-    console.log("Passei aqui");
-    next();
-})
+  console.log("Passei aqui");
+  next();
+});
 
-app.use('/tarefas', router);
+// middleware de rota
+app.use("/tarefas", router);
 
 // middleware de erro
 app.use((err, req, res, next) => {
-    console.error(err.message);
-    res.status(500).send("Algo de errado não está certo!");
+  console.log(err.message);
+  res.status(500).send("Algo de errado não está certo!");
 });
 
 // inicia a aplicação
-app.listen(3000, ()=>{
-    console.log("App está ON!");
+app.listen(3000, () => {
+  console.log("App está ON!");
 });
