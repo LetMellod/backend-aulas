@@ -1,0 +1,65 @@
+openapi: 3.1.1
+info:
+  title: Minha API
+  description: Projeto de uma API REST desenvolvida com Expressjs
+  version: 0.1.0
+servers:
+  - url: htpp:/localhost:3000/
+    description: Ambiente de Desenvolvimento
+tags:
+  - tarefas
+paths:
+  /tarefas:
+    get:
+      tags: 
+        - tarefas
+      reponses:
+        200:
+          content:
+            aplication/json:
+              schema:
+                type: array
+    post:
+      tags:
+        - tarefas
+      requestBody:
+          content:
+            aplication/json:
+              schema:
+                type: object
+      responses:
+        201:
+          content:
+            aplication/json:
+              schema:
+                type: object
+        422:
+          content:
+            aplication/json:
+              schema:
+                type: object
+        500:
+          content:
+            aplication/json:
+              schema:
+                type: object
+  /tarefas/id:
+    get:
+      tags:
+        - tarefas
+      parameters:
+        - in: path
+          name: tarefaId
+          required: true
+          schema:
+            type: integer
+      responses:
+        202:
+        404:
+        500:
+    put:
+      tags:
+        - tarefas
+    delete:
+      tags:
+        - tarefas
