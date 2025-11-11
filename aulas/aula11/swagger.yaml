@@ -16,31 +16,37 @@ paths:
       reponses:
         200:
           content:
-            aplication/json:
+            application/json:
               schema:
                 type: array
+                 
+        500:
+          content:
+            application/json:
+              schema:
+                type: object
     post:
       tags:
         - tarefas
       requestBody:
           content:
-            aplication/json:
+            application/json:
               schema:
                 type: object
       responses:
         201:
           content:
-            aplication/json:
+            application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Tarefa'
         422:
           content:
-            aplication/json:
+            application/json:
               schema:
                 type: object
         500:
           content:
-            aplication/json:
+            application/json:
               schema:
                 type: object
   /tarefas/id:
@@ -52,14 +58,104 @@ paths:
           name: tarefaId
           required: true
           schema:
-            type: integer
+            type: string
       responses:
-        202:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          content:
+            application/json:
+              schema:
+                type: object
         404:
+          content:
+            application/json:
+              schema:
+                type: object
         500:
+          content:
+            application/json:
+              schema:
+                type: object
     put:
       tags:
         - tarefas
+      parameters:
+        - in: path
+          name: tarefaId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          content:
+            application/json:
+              schema:
+                type: object
+        404:
+          content:
+            application/json:
+              schema:
+                type: object
+        422:
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          content:
+            application/json:
+              schema:
+                type: object
+
     delete:
       tags:
         - tarefas
+      parameters:
+        - in: path
+          name: tarefaId
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          content:
+        400:
+          content:
+            application/json:
+              schema:
+                type: object
+        404:
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Tarefa:
+      type: object
+      properties:
+        _id:
+          type: string
+        nome:
+          type: string
+        concluida:
+          type: boolean
