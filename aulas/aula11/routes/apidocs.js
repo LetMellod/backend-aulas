@@ -11,7 +11,7 @@ const swaggerDoc = YAML.parse(file);
 
 // criar middleware de rota
 const router = express.Router();
-
+ 
 // carrega a aplicação do swagger UI
 router.use("/", swaggerUi.serve);
 
